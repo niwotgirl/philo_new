@@ -6,7 +6,7 @@
 /*   By: aabelkis <aabelkis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 14:02:14 by aabelkis          #+#    #+#             */
-/*   Updated: 2025/11/20 16:20:10 by aabelkis         ###   ########.fr       */
+/*   Updated: 2025/11/20 16:56:12 by aabelkis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,41 @@ void *routine(void *arg)
         pthread_mutex_unlock(&philo->monitor->print_mutex);
 
         custom_sleep(philo->time_to_sleep);
+		/*
 
+        // 🥄 Release forks
+        pthread_mutex_unlock(philo->left_fork_mutex);
+        pthread_mutex_unlock(&philo->right_fork_mutex);
+
+        // Check if finished minimum meals
+        pthread_mutex_lock(&philo->monitor->print_mutex);
+        int finished = (philo->minimum_meals > 0 && philo->meals_eaten >= philo->minimum_meals);
+        pthread_mutex_unlock(&philo->monitor->print_mutex);
+        if (finished)
+            break;
+
+        // 💤 Sleep
+        pthread_mutex_lock(&philo->monitor->print_mutex);
+        philo->status = 2; // sleeping
+        philo->has_new_status = 1;
+        pthread_mutex_unlock(&philo->monitor->print_mutex);
+
+        //Interruptible sleep for sleeping phase
+        {
+            long start = get_current_time_ms();
+            while (1)
+            {
+                pthread_mutex_lock(&philo->monitor->print_mutex);
+                int died = philo->monitor->someone_died;
+                pthread_mutex_unlock(&philo->monitor->print_mutex);
+                if (died)
+                    break;
+                if (get_current_time_ms() - start >= philo->time_to_sleep)
+                    break;
+                usleep(1000);
+            }
+        }
+*/
         // 💭 Think only if they can survive until next meal
         now = get_current_time_ms();
         pthread_mutex_lock(&philo->monitor->print_mutex);

@@ -64,8 +64,13 @@ int main(int argc, char **argv)
             printf("0 1 has taken a fork\n");
             pthread_mutex_unlock(&monitor.print_mutex);
 
-            /* sleep until death */
-            custom_sleep(philo_st[0].time_to_die);
+            /* sleep until death (interruptible check not strictly needed here,
+               but use same pattern to be consistent) */
+            {
+                long start = get_current_time_ms();
+                while (get_current_time_ms() - start < philo_st[0].time_to_die)
+                    usleep(1000);
+            }
 
             pthread_mutex_lock(&monitor.print_mutex);
             printf("%ld 1 died\n", get_current_time_ms() - monitor.start_time_ms);

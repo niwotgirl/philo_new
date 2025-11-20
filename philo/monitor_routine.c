@@ -39,8 +39,8 @@ void *monitor_routine(void *arg)
             int min_meals = p->minimum_meals;
             pthread_mutex_unlock(&monitor->print_mutex);
 
-            // Check death
-            if (now - last_meal > p->time_to_die)
+            // Check death (die at >= time_to_die)
+            if (now - last_meal >= p->time_to_die)
             {
                 pthread_mutex_lock(&monitor->print_mutex);
                 printf("%ld %d died\n", now - monitor->start_time_ms, p->id);
@@ -77,7 +77,7 @@ void *monitor_routine(void *arg)
             return NULL;
         }
 
-        usleep(1000); // small sleep to avoid busy waiting
+        usleep(500); // small sleep to avoid busy waiting and be more responsive
     }
 
     return NULL;
