@@ -6,26 +6,26 @@
 /*   By: aabelkis <aabelkis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 16:21:56 by aabelkis          #+#    #+#             */
-/*   Updated: 2025/11/20 16:21:57 by aabelkis         ###   ########.fr       */
+/*   Updated: 2025/11/20 18:01:03 by aabelkis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
-char *ft_strcpy(char *dest, const char *src)
+
+char	*ft_strcpy(char *dest, const char *src)
 {
-	int i = 0;
+	int	i;
 
+	i = 0;
 	if (!dest || !src)
-		return dest;
-
+		return (dest);
 	while (src[i] != '\0')
 	{
 		dest[i] = src[i];
 		i++;
 	}
-
 	dest[i] = '\0';
-	return dest;
+	return (dest);
 }
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
@@ -69,4 +69,3 @@ char	*ft_strdup(const char *s)
 	ft_memcpy(ptr, s, n);
 	return (ptr);
 }
-

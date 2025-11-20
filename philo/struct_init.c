@@ -6,13 +6,13 @@
 /*   By: aabelkis <aabelkis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 14:02:35 by aabelkis          #+#    #+#             */
-/*   Updated: 2025/10/24 11:19:59 by aabelkis         ###   ########.fr       */
+/*   Updated: 2025/11/20 17:57:55 by aabelkis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void struct_init(int val, int j, int i, t_philo *philo) //j needed for ID, i so I know which arg, val so I know what the val is, and philo so I know where to store it
+void	struct_init(int val, int j, int i, t_philo *philo) //j needed for ID, i so I know which arg, val so I know what the val is, and philo so I know where to store it
 {
 	if (i == 2)
 	{
