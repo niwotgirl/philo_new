@@ -6,7 +6,7 @@
 /*   By: aabelkis <aabelkis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 13:59:40 by aabelkis          #+#    #+#             */
-/*   Updated: 2025/10/20 11:46:33 by aabelkis         ###   ########.fr       */
+/*   Updated: 2025/11/20 16:33:55 by aabelkis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,27 +34,6 @@ int ft_error(int argc, char **argv, int i)
 	if (i == 1 && val == 0)
 	{
 		printf("error: minimum 1 philo needed and other params must be positive\n");
-		return(-1);
-	}
-	if (i == 1 && val == 1) // this is the one I might need to delete
-	{
-		printf("philo stuck holding 1 fork\n");
-		return(-1);
-	}
-	if (i == 2 && val == 0)
-	{
-		printf("philo died immediatly\n"); // could just say get_time_of_day() philo _ died
-		return(-1);
-	}	
-	if (i == 3 && val == 0)
-	{
-		printf("philos ate fast\n"); // this one still works actually - they just sleep until have had enough meals - can still send through
-		return(-1);
-	}
-	//with sleep time == 0 -> they just never sleep
-	if (i == 5 && val == 0)
-	{
-		printf("all philos met minimum meal\n"); //or just say sim ended
 		return(-1);
 	}
 	return(val);
